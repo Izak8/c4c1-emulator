@@ -1,5 +1,4 @@
-Translation chart for manually decoding/translating C4C 1 30-bit instruction code to mnemonic assembly. 
-Copy the templates, follow the examples.
+Translation chart for manually translating mnemonic assembly to C4C 1 30-bit instruction code or corresponding hex.
 
 30-bit instruction bitfield:
 [11111][xxxx][xxxxxxxx][xxxxxxxx][00000]
@@ -10,37 +9,24 @@ a = OPERANDA
 b = OPERANDB
 
 =================================================================
-cbx - Count by given number 1 - F (Default example program)
+cbx - Count by given number 0x1 - 0xF (Default example program)
 
 Takes 
 =================================================================
-11111 | iiii | aaaaaaaa | bbbbbbbb | 00000 <==> INST	OPA	| OPB
-
-30-bit Instruction:
-
-11111 | 1110 | 00000001 | 00000000 | 00000 <==>	RECV	0x1	| 0x0
-11111 | 1101 | 00000000 | 00000001 | 00000 <==>	ADD		0x0	| 0x1
-11111 | 1111 | 00000000 | 00000000 | 00000 <==>	SEND	0x0	| 0x0
-11111 | 0110 | 00000101 | 00000000 | 00000 <==>	JZ		0x7	| 0x0
-11111 | 0101 | 00000001 | 00000000 | 00000 <==>	JMP		0x1	| 0x0
-11111 | 0000 | 00000000 | 00000000 | 00000 <==>	HLT		0x0	| 0x0
+INST	OPA	| OPB <==> 11111 | iiii | aaaaaaaa | bbbbbbbb | 00000
 
 cbx.asm:
 
-	RECV BX
-	ADD AX, BX
-	SEND AX
-	JZ 0x7
-	JMP 0x1
-	HLT
+RECV	0x1	| 0x0 <==> 11111 | 1110 | 00000001 | 00000000 | 00000	
+ADD		0x0	| 0x1 <==> 11111 | 1101 | 00000000 | 00000001 | 00000	
+SEND	0x0	| 0x0 <==> 11111 | 1111 | 00000000 | 00000000 | 00000	
+JZ		0x7	| 0x0 <==> 11111 | 0110 | 00000101 | 00000000 | 00000	
+JMP		0x1	| 0x0 <==> 11111 | 0101 | 00000001 | 00000000 | 00000	
+HLT		0x0	| 0x0 <==> 11111 | 0000 | 00000000 | 00000000 | 00000	
 
 =================================================================
 Name - Summary
 
 Description 
 =================================================================
-11111 | iiii | aaaaaaaa | bbbbbbbb | 00000 <==> INST	OPA	| OPB
-
-30-bit Instruction:
-
-Name.asm:
+INST	OPA	| OPB <==> 11111 | iiii | aaaaaaaa | bbbbbbbb | 00000

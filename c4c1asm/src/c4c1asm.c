@@ -1,14 +1,9 @@
 #include <stdio.h>
 
-unsigned char parse();
+#include "../include/decode.h"
+#include "../include/parse.h"
 
 int main(int argc, char** argv)
-{
-
-    return 0;
-}
-
-unsigned char parse()
 {
     return 0;
 }

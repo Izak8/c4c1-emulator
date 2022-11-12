@@ -1,1 +1,1 @@
-#include "../include/decoder.h"
+#include "decoder.h"

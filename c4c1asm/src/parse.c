@@ -1,43 +1,54 @@
-#include "../include/parse.h"
+#include "parse.h"
 
-unsigned char* parse(FILE* fp)
+extern byte* parseLine(FILE* fp)
 {
-    unsigned char* buf = {0};
+    //Reads characters from a file stream specified by fp into a character array.
+    //A '\n' character is stored as '\0', terminating the character array.
+    //The function returns a pointer to the first character in the array.
+
+    //The return type is a pointer to a 'byte' --> unsigned char (typedef).
+
+    //Successive calls to the function will continue parsing each line of a file
+    //until EOF is reached.
+
+    //To parse a specific line, use fsetpos.
+
+    //A buffer and some tracking variables
+    byte* buf = {0};
     int buf_size = 0;         
     int buf_position = 0;
-    
-    int c = 0;    //Value of the current character in stream fp
-    
-    while((c = fgetc(fp)) != EOF)
-    {
-        //While file is open
 
-        //Check buffer_size
-        //Allocate new byte if at buf_size = 0
+    int c = 0;    //Value of the current character
+    
+    while((c = fgetc(fp)) != EOF) //While file is open
+    {
+        //Allocate more space in buf for the next character
         if(buf_position > buf_size)
         {
             buf = realloc(buf, buf_size + 1);
         }
         else
         {
+            //Base case when buf_size == 0
             buf = malloc(1);
         }
         //Check if current char is \n
-        //Break and store \0 in buf if true
         if(c == '\n')
         {
+            //Break loop and store \0 as last character
             buf[buf_position] = '\0';
             break;
         }
-        //Otherwise, read current char
-        //Store in buf
+        //Otherwise, store current char
         buf[buf_position++] = c;
+        //Repeat..
     }
 
     return buf;
 }
 
-unsigned char** tokenize(unsigned char* src)
+byte** tokenizeLine(byte* src)
 {
-    //tokenize
+    //return 0 for now
+    return 0;
 }

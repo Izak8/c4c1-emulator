@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "../include/decode.h"
-#include "../include/parse.h"
+#include "../../include/c4c1_defs.h"
+#include "parse.h"
 
 int main(int argc, char** argv)
 {
